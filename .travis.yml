@@ -21,3 +21,15 @@ jobs:
       env: TEST_BROWSER=firefox
       addons:
         firefox: latest
+    - stage: Release
+      name: NPM release
+      script: npm run build
+      deploy:
+        provider: npm
+        email: '$NPM_EMAIL'
+        api_key: '$NPM_API_KEY'
+        skip_cleanup: true
+        on:
+          branch: master
+          tags: true
+          condition: type != pull_request

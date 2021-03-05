@@ -31,17 +31,20 @@
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "mock-http-server": "^1.4.2",
+    "np": "^7.4.0",
     "selenium-webdriver": "^4.0.0-alpha.7",
     "webpack": "^5.5.1",
     "webpack-cli": "^4.2.0"
   },
   "files": [
     "src/**/*",
-    "src/logic/langspec.json"
+    "src/logic/langspec.json",
+    "dist"
   ],
   "scripts": {
     "test": "node tests/mocha.js",
     "prepare-browser-tests": "npm run build && mkdir -p tests/cucumber/browser/build && cp dist/algosdk.min.* tests/cucumber/browser/build/ && webpack --config tests/cucumber/browser/webpack.config.js",
+    "prepare-release": "np",
     "build": "webpack --config webpack.config.js"
   },
   "author": "Algorand, llc",
