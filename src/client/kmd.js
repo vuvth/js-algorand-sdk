@@ -284,7 +284,7 @@ function Kmd(token, baseServer = 'http://127.0.0.1', port = 7833) {
    * @param walletHandle
    * @param walletPassword
    * @param transaction
-   * @param publicKey sign the txn with the key corresponding to publicKey (used for working with a rekeyed addr)
+   * @param publicKey - sign the txn with the key corresponding to publicKey (used for working with a rekeyed addr)
    * @returns {Promise<*>}
    */
   this.signTransactionWithSpecificPublicKey = async (
