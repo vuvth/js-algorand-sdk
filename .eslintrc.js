@@ -5,16 +5,23 @@ module.exports = {
     node: true,
     mocha: true,
   },
-  extends: ['airbnb-base', 'prettier', 'plugin:import/typescript'],
+  extends: [
+    'airbnb-base',
+    'prettier',
+    'plugin:import/typescript',
+    'plugin:jsdoc/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
   },
-  plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
+  plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc', 'eslint-plugin-jsdoc'],
   rules: {
     'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'max-classes-per-file': 'off',
+    'jsdoc/require-param-type': 'off',
+    'jsdoc/require-returns': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
