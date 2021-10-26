@@ -116,6 +116,13 @@ export interface SuggestedParams {
   genesisHash: string;
 }
 
+export interface Verifier {
+ 
+  r: Uint8Array;
+
+  vr: boolean;
+
+}
 /**
  * A full list of all available transaction parameters
  *
@@ -371,4 +378,6 @@ export interface TransactionParams {
    * Int representing extra pages of memory to rent during an application create transaction.
    */
   extraPages?: number;
+
+  stateProofKey?:Verifier
 }

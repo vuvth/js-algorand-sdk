@@ -2,6 +2,8 @@
  * Interfaces for the encoded transaction object. Every property is labelled with its associated Transaction type property
  */
 
+import { Verifier } from "./base";
+
 export interface EncodedAssetParams {
   /**
    * assetTotal
@@ -83,6 +85,12 @@ export interface EncodedGlobalStateSchema {
   nbs: number;
 }
 
+export interface EncodedVerifier {
+  
+  r: Uint8Array;
+
+  vr: boolean;
+}
 /**
  * A rough structure for the encoded transaction object. Every property is labelled with its associated Transaction type property
  */
@@ -291,6 +299,8 @@ export interface EncodedTransaction {
    * extraPages
    */
   apep?: number;
+
+  sprfkey?:EncodedVerifier;
 }
 
 export interface EncodedSubsig {

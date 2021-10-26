@@ -1,3 +1,5 @@
+import {Verifier} from '../src/types/transactions'
+
 const assert = require('assert');
 const algosdk = require('../index');
 const group = require('../src/group');

@@ -157,6 +157,7 @@ export function makePaymentTxnWithSuggestedParamsFromObject(
  * @param rekeyTo - rekeyTo address, optional
  * @param nonParticipation - configure whether the address wants to stop participating. If true,
  *   voteKey, selectionKey, voteFirst, voteLast, and voteKeyDilution must be undefined.
+ * @param stateProofKey
  */
 export function makeKeyRegistrationTxnWithSuggestedParams(
   from: KeyRegistrationTxn['from'],
@@ -168,7 +169,8 @@ export function makeKeyRegistrationTxnWithSuggestedParams(
   voteKeyDilution: KeyRegistrationTxn['voteKeyDilution'],
   suggestedParams: MustHaveSuggestedParams<KeyRegistrationTxn>['suggestedParams'],
   rekeyTo?: KeyRegistrationTxn['reKeyTo'],
-  nonParticipation?: false
+  nonParticipation?: false,
+  stateProofKey?: KeyRegistrationTxn['stateProofKey'] 
 ): txnBuilder.Transaction;
 export function makeKeyRegistrationTxnWithSuggestedParams(
   from: KeyRegistrationTxn['from'],
@@ -180,7 +182,8 @@ export function makeKeyRegistrationTxnWithSuggestedParams(
   voteKeyDilution: undefined,
   suggestedParams: MustHaveSuggestedParams<KeyRegistrationTxn>['suggestedParams'],
   rekeyTo?: KeyRegistrationTxn['reKeyTo'],
-  nonParticipation?: true
+  nonParticipation?: true,
+  stateProofKey?: undefined
 ): txnBuilder.Transaction;
 export function makeKeyRegistrationTxnWithSuggestedParams(
   from: any,
@@ -192,7 +195,8 @@ export function makeKeyRegistrationTxnWithSuggestedParams(
   voteKeyDilution: any,
   suggestedParams: any,
   rekeyTo?: any,
-  nonParticipation = false
+  nonParticipation = false,
+  stateProofKey?: undefined
 ) {
   const o: KeyRegistrationTxn = {
     from,
@@ -206,6 +210,7 @@ export function makeKeyRegistrationTxnWithSuggestedParams(
     type: TransactionType.keyreg,
     reKeyTo: rekeyTo,
     nonParticipation,
+    stateProofKey
   };
   return new txnBuilder.Transaction(o);
 }
@@ -345,7 +350,8 @@ export function makeKeyRegistrationTxnWithSuggestedParamsFromObject(o: any) {
     o.voteKeyDilution,
     o.suggestedParams,
     o.rekeyTo,
-    o.nonParticipation
+    o.nonParticipation,
+    o.stateProofKey
   );
 }
 

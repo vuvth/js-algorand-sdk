@@ -9,6 +9,7 @@ type SpecificParameters = Pick<
   | 'voteLast'
   | 'voteKeyDilution'
   | 'nonParticipation'
+  | 'stateProofKey'
 >;
 
 interface Overwrites {

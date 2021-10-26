@@ -957,6 +957,55 @@ module.exports = function getSteps(options) {
     }
   });
 
+  Given('default V2 key registration transaction {string}', 
+      async function (type) {
+      [this.pk] = this.accounts;
+      this.params = await this.acl.getTransactionParams();
+      this.fee = this.params.fee;
+      this.fv = this.params.lastRound;
+      this.lv = this.fv + 1000;
+      this.note = undefined;
+      this.gh = this.params.genesishashb64;
+      this.lastRound = result.lastRound;
+
+      if(type==="online"){
+        this.txn = {
+          fee: this.fee,
+          firstRound: this.fv,
+          lastRound: this.lv,
+          genesisHash: this.gh,
+          voteKey: "9mr13Ri8rFepxN3ghIUrZNui6LqqM5hEzB45Rri5lkU=",
+          selectionKey: "dx717L3uOIIb/jr9OIyls1l5Ei00NFgRa380w7TnPr4=",
+          voteFirst: 1,
+          voteLast: 2000,
+          voteKeyDilution: 100,
+          stateProofKey: Verifier={r:1,vr:true },
+          type: 'keyreg',
+        };
+      }else if(type ==="offline"){
+         this.txn = {
+          fee: this.fee,
+          genesisHash: this.gh,
+          firstRound: this.fv,
+          lastRound: this.lv,
+          stateProofKey: Verifier={r:1,vr:true },
+          type: 'keyreg',
+        };
+
+      }else if(type === "nonparticipation"){
+        this.txn = {
+          fee: this.fee,
+          firstRound: this.fv,
+          lastRound: this.lv,
+          genesisHash: this.gh,
+          nonparticipation: true,
+          type: 'keyreg',
+        };
+      }
+      return this.txn;
+    }
+  );
+
   When(
     'I get recent transactions, limited by {int} transactions',
     function (int) {

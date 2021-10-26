@@ -7,6 +7,7 @@ import {
   OnApplicationComplete,
   TransactionParams,
   TransactionType,
+  Verifier,
 } from './types/transactions/base';
 import AnyTransaction, {
   MustHaveSuggestedParams,
@@ -163,6 +164,7 @@ export class Transaction implements TransactionStorageStructure {
   nonParticipation?: boolean;
   group?: Buffer;
   extraPages?: number;
+  stateProofKey:Verifier;
 
   constructor({ ...transaction }: AnyTransaction) {
     // Populate defaults
@@ -542,6 +544,7 @@ export class Transaction implements TransactionStorageStructure {
         votefst: this.voteFirst,
         votelst: this.voteLast,
         votekd: this.voteKeyDilution,
+        sprfkey: this.stateProofKey
       };
       // allowed zero values
       if (!txn.note.length) delete txn.note;
@@ -561,6 +564,7 @@ export class Transaction implements TransactionStorageStructure {
       if (!txn.votefst) delete txn.votefst;
       if (!txn.votelst) delete txn.votelst;
       if (!txn.votekd) delete txn.votekd;
+      if (!txn.sprfkey) delete txn.sprfkey;
       return txn;
     }
     if (this.type === 'acfg') {
