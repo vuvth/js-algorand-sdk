@@ -1,5 +1,6 @@
 import JSONbigWithoutConfig from 'json-bigint';
 import IntDecoding from '../types/intDecoding';
+import { Numeric } from '../types';
 
 const JSONbig = JSONbigWithoutConfig({ useNativeBigInt: true, strict: true });
 
@@ -122,4 +123,13 @@ export function isNode() {
     typeof process.versions === 'object' &&
     typeof process.versions.node !== 'undefined'
   );
+}
+
+export class NumbericUtils {
+  static isSafeNumber(n: Numeric): boolean {
+    if (typeof n === 'number') {
+      return Number.isSafeInteger(n);
+    }
+    return typeof n === 'bigint';
+  }
 }

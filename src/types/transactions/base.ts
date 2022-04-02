@@ -1,3 +1,5 @@
+import { Numeric } from '../basic';
+
 /**
  * Enum for application transaction types.
  *
@@ -150,7 +152,7 @@ export interface TransactionParams {
   /**
    * Integer amount to send
    */
-  amount: number | bigint;
+  amount: Numeric;
 
   /**
    * Integer first protocol round on which this txn is valid
@@ -225,7 +227,7 @@ export interface TransactionParams {
   /**
    * Total supply of the asset
    */
-  assetTotal: number | bigint;
+  assetTotal: Numeric;
 
   /**
    * Integer number of decimals for asset unit calcuation
