@@ -104,17 +104,17 @@ export interface SuggestedParams {
   /**
    * Integer fee per byte, in microAlgos. For a flat fee, set flatFee to true
    */
-  fee: number;
+  fee: Numeric;
 
   /**
    * First protocol round on which this txn is valid
    */
-  firstRound: number;
+  firstRound: Numeric;
 
   /**
    * Last protocol round on which this txn is valid
    */
-  lastRound: number;
+  lastRound: Numeric;
 
   /**
    * Specifies genesis ID of network in use
@@ -147,7 +147,7 @@ export interface TransactionParams {
   /**
    * Integer fee per byte, in microAlgos. For a flat fee, set flatFee to true
    */
-  fee: number;
+  fee: Numeric;
 
   /**
    * Integer amount to send
@@ -157,12 +157,12 @@ export interface TransactionParams {
   /**
    * Integer first protocol round on which this txn is valid
    */
-  firstRound: number;
+  firstRound: Numeric;
 
   /**
    * Integer last protocol round on which this txn is valid
    */
-  lastRound: number;
+  lastRound: Numeric;
 
   /**
    * Arbitrary data for sender to store
@@ -207,22 +207,22 @@ export interface TransactionParams {
   /**
    * First round on which voteKey is valid
    */
-  voteFirst: number;
+  voteFirst: Numeric;
 
   /**
    * Last round on which voteKey is valid
    */
-  voteLast: number;
+  voteLast: Numeric;
 
   /**
    * The dilution fo the 2-level participation key
    */
-  voteKeyDilution: number;
+  voteKeyDilution: Numeric;
 
   /**
    * Asset index uniquely specifying the asset
    */
-  assetIndex: number;
+  assetIndex: Numeric;
 
   /**
    * Total supply of the asset
@@ -230,9 +230,9 @@ export interface TransactionParams {
   assetTotal: Numeric;
 
   /**
-   * Integer number of decimals for asset unit calcuation
+   * Integer Numeric of decimals for asset unit calcuation
    */
-  assetDecimals: number;
+  assetDecimals: Numeric;
 
   /**
    * Whether asset accounts should default to being frozen
@@ -297,7 +297,7 @@ export interface TransactionParams {
   /**
    * A unique application index
    */
-  appIndex: number;
+  appIndex: Numeric;
 
   /**
    * What application should do once the program has been run
@@ -307,22 +307,22 @@ export interface TransactionParams {
   /**
    * Restricts number of ints in per-user local state
    */
-  appLocalInts: number;
+  appLocalInts: Numeric;
 
   /**
    * Restricts number of byte slices in per-user local state
    */
-  appLocalByteSlices: number;
+  appLocalByteSlices: Numeric;
 
   /**
    * Restricts number of ints in global state
    */
-  appGlobalInts: number;
+  appGlobalInts: Numeric;
 
   /**
    * Restricts number of byte slices in global state
    */
-  appGlobalByteSlices: number;
+  appGlobalByteSlices: Numeric;
 
   /**
    * The compiled TEAL that approves a transaction
@@ -347,12 +347,12 @@ export interface TransactionParams {
   /**
    * Array of int, any other apps used by the application, identified by index
    */
-  appForeignApps?: number[];
+  appForeignApps?: Numeric[];
 
   /**
    * Array of int, any assets used by the application, identified by index
    */
-  appForeignAssets?: number[];
+  appForeignAssets?: Numeric[];
 
   /**
    * Transaction type
@@ -386,5 +386,5 @@ export interface TransactionParams {
   /**
    * Int representing extra pages of memory to rent during an application create transaction.
    */
-  extraPages?: number;
+  extraPages?: Numeric;
 }
