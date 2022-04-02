@@ -1,4 +1,3 @@
-import { Numeric } from '../basic';
 /**
  * Interfaces for the encoded transaction object. Every property is labelled with its associated Transaction type property
  */
@@ -7,7 +6,7 @@ export interface EncodedAssetParams {
   /**
    * assetTotal
    */
-  t: Numeric;
+  t: number | bigint;
 
   /**
    * assetDefaultFrozen
@@ -141,12 +140,12 @@ export interface EncodedTransaction {
   /**
    * amount
    */
-  amt?: Numeric;
+  amt?: number | bigint;
 
   /**
    * amount (but for asset transfers)
    */
-  aamt?: Numeric;
+  aamt?: number | bigint;
 
   /**
    * closeRemainderTo

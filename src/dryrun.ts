@@ -9,6 +9,7 @@ import {
 import { SignedTransaction } from './transaction';
 import { TransactionType } from './types/transactions';
 import { encodeAddress, getApplicationAddress } from './encoding/address';
+import { Numeric } from './types';
 
 const defaultAppId = 1380011588;
 
@@ -58,15 +59,15 @@ export async function createDryrun({
   client: AlgodClient;
   txns: SignedTransaction[];
   protocolVersion?: string;
-  latestTimestamp?: number | bigint;
-  round?: number | bigint;
+  latestTimestamp?: Numeric;
+  round?: Numeric;
   sources?: DryrunSource[];
 }): Promise<DryrunRequest> {
   const appInfos = [];
   const acctInfos = [];
 
-  const apps: number[] = [];
-  const assets: number[] = [];
+  const apps: Numeric[] = [];
+  const assets: Numeric[] = [];
   const accts: string[] = [];
 
   for (const t of txns) {
